@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afzal Hayat | Professional Video Editor</title>
+  <meta name="description" content="Professional video editor specializing in product videos, fashion & lifestyle, real estate/renovation, ASMR, and short-form content." />
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --card: #141416;
+      --text: #f5f5f5;
+      --muted: #a1a1aa;
+      --accent: #a78bfa;
+      --accent2: #c4b5fd;
+      --border: #27272a;
+      --success: #34d399;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .hero-text .tagline {
+      font-size: 1.15rem;
+      color: var(--accent2);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .hero-text p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1.05rem;
+    }
+    .cta-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0b;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
+
+    section { padding: 64px 0; }
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 1.05rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .work-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .work-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    .work-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .work-body { padding: 20px; }
+    .work-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .work-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(167, 139, 250, 0.15);
+      color: var(--accent2);
+      font-weight: 500;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .about-content { grid-template-columns: 1fr; }
+    }
+    .about-text p { color: var(--muted); margin-bottom: 16px; }
+    .highlights { list-style: none; }
+    .highlights li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .highlights li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+    .contact-box h2 { margin-bottom: 12px; }
+    .contact-box p { color: var(--muted); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <div class="hero-text">
+        <h1>Afzal Hayat</h1>
+        <div class="tagline">Professional Video Editor</div>
+        <p>
+          I create polished product videos, fashion & lifestyle edits, real estate/renovation showcases, 
+          ASMR content, and high-performing short-form videos that look premium and convert.
+        </p>
+        <div class="cta-group">
+          <a href="#work" class="btn btn-primary">View Work</a>
+          <a href="#contact" class="btn btn-outline">Hire Me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="skills">
+      <div class="container">
+        <h2>Core Skills</h2>
+        <p class="section-sub">Tools and techniques I use every day</p>
+        <div class="skills-grid">
+          <div class="skill">Premiere Pro</div>
+          <div class="skill">DaVinci Resolve</div>
+          <div class="skill">Color Grading</div>
+          <div class="skill">Product Videos</div>
+          <div class="skill">Fashion & Lifestyle</div>
+          <div class="skill">Real Estate / Renovation</div>
+          <div class="skill">Short-Form / Reels</div>
+          <div class="skill">ASMR Editing</div>
+          <div class="skill">Talking-Head</div>
+          <div class="skill">Logo Animation</div>
+          <div class="skill">Audio Cleanup</div>
+          <div class="skill">Motion Graphics</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2>Selected Work</h2>
+        <p class="section-sub">Recent projects across product, fashion, property, and short-form content</p>
+        <div class="work-grid">
+
+          <article class="work-card">
+            <div class="work-thumb">💎</div>
+            <div class="work-body">
+              <h3>Jewelry & Product Videos</h3>
+              <p>Clean, detail-focused product showcases designed to highlight craftsmanship and create desire. Multiple polished final versions delivered.</p>
+              <div class="tags">
+                <span class="tag">Product</span>
+                <span class="tag">Commercial</span>
+                <span class="tag">Detail Shots</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb">👗</div>
+            <div class="work-body">
+              <h3>Fashion & Lifestyle Edits</h3>
+              <p>Stylish pacing and visual flow for fashion and lifestyle content. Strong focus on model presentation, transitions, and modern aesthetic.</p>
+              <div class="tags">
+                <span class="tag">Fashion</span>
+                <span class="tag">Lifestyle</span>
+                <span class="tag">Social</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb">🏠</div>
+            <div class="work-body">
+              <h3>Real Estate & Renovation</h3>
+              <p>Property and renovation videos that make spaces look inviting and highlight transformation. Clear storytelling and smooth camera flow.</p>
+              <div class="tags">
+                <span class="tag">Real Estate</span>
+                <span class="tag">Renovation</span>
+                <span class="tag">Walkthrough</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb">🎬</div>
+            <div class="work-body">
+              <h3>Cinematic & High-Energy Cuts</h3>
+              <p>Dynamic, cinematic-style editing with strong rhythm and energy (including action-inspired sequences).</p>
+              <div class="tags">
+                <span class="tag">Cinematic</span>
+                <span class="tag">Action</span>
+                <span class="tag">Dynamic</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb">🎧</div>
+            <div class="work-body">
+              <h3>ASMR & Sensory Content</h3>
+              <p>Carefully paced ASMR videos with clean audio focus and satisfying visual rhythm.</p>
+              <div class="tags">
+                <span class="tag">ASMR</span>
+                <span class="tag">Audio</span>
+                <span class="tag">Sensory</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb">🗣️</div>
+            <div class="work-body">
+              <h3>Talking-Head & Conversation</h3>
+              <p>Clean interview and dialogue edits with natural pacing, good audio balance, and professional polish.</p>
+              <div class="tags">
+                <span class="tag">Talking Head</span>
+                <span class="tag">Interview</span>
+                <span class="tag">Dialogue</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="section-sub">What you get when we work together</p>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I’m a professional video editor focused on creating content that looks premium and performs well. 
+              My work spans product videos (especially jewelry), fashion & lifestyle, real estate/renovation, 
+              ASMR, talking-head, and short-form social content.
+            </p>
+            <p>
+              I pay close attention to pacing, color, audio quality, and final delivery formats so your videos 
+              are ready for ads, social media, websites, or client presentations.
+            </p>
+          </div>
+          <ul class="highlights">
+            <li>Clean, commercial-quality product and fashion edits</li>
+            <li>Strong visual storytelling for property and lifestyle content</li>
+            <li>Fast turnaround with clear communication</li>
+            <li>Optimized exports for Instagram, TikTok, YouTube & web</li>
+            <li>Open to both fixed-price projects and ongoing work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Let’s work together</h2>
+          <p>
+            Need product videos, fashion edits, property showcases, ASMR, or short-form content? 
+            Send me a message and let’s discuss your project.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:afzalhayat2121@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.upwork.com/freelancers/~01dd21eb4f07a26dda" class="btn btn-outline" target="_blank" rel="noopener">Upwork Profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Afzal Hayat · Professional Video Editor
+    </div>
+  </footer>
+</body>
+</html>
